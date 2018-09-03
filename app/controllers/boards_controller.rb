@@ -30,9 +30,13 @@ class BoardsController < ApplicationController
   end
 
   def update
-    @board.update(board_params)
-
-    redirect_to @board
+    if @board.update(board_params)
+      flash[:notice] = "「#{@board.title}」のトピックを更新しました"
+      redirect_to @board
+    else
+      flash[:error_messages] = @board.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
