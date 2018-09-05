@@ -7,4 +7,9 @@ module ApplicationHelper
       link_to name, path, class: 'nav-link'
     end
   end
+
+  def full_title(page_title = "")
+    base_title = "EnSns"
+    full_title = page_title.empty? ? base_title : "#{page_title} | #{base_title}"
+  end
 end
