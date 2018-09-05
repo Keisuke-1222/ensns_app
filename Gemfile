@@ -36,6 +36,9 @@ gem 'kaminari'
 gem 'rails-i18n'
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'rails_admin'
+gem 'cancancan'
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
