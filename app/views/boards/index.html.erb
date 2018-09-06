@@ -18,31 +18,28 @@
 <% if flash[:notice] %>
   <div class="alert alert-danger"><%= flash[:notice] %></div>
 <% end %>
-<table class="table table-hover boards__table">
-  <thead class="thead-dark">
-    <tr>
-      <th>ID</th>
-      <th>タイトル</th>
-      <th>作成者</th>
-      <th>作成日時</th>
-      <th>更新日時</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @boards.each do |board| %>
-    <tr>
-      <td><%= board.id %></td>
-      <td><%= board.title %></td>
-      <td><%= board.name %></td>
-      <td><%= board.created_at.to_s(:datetime_jp) %></td>
-      <td><%= board.updated_at.to_s(:datetime_jp) %></td>
-      <td><%= link_to '詳細', board, class: 'btn btn-outline-dark' %></td>
-      <td><%= link_to '削除', board, class: 'btn btn-outline-dark', method: :delete %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
 
+<div class="row">
+  <% @boards.each do |board| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <%= link_to board do %>
+            <h4><%= board.title %>(<%= board.comments.size %>)</h4>
+          <% end %>
+          <% board.tags.each do |tag| %>
+            <span class="badge badge-primary"><%= tag.name %></span>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted"><%= board.created_at.to_s(:datetime_jp) %></h6>
+          <p class="card-text"><%= board.body.truncate(50) %></p>
+        </div>
+        <div class="card-footer">
+          作成者：<%= link_to board.name, root_path %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <%= paginate @boards %>
