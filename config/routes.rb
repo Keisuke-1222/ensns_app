@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :boards
   resources :comments, only: [:create, :destroy]
+  resources :users, only: [:index, :show]
 end
