@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906053022) do
+ActiveRecord::Schema.define(version: 20180906074804) do
 
   create_table "board_tag_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "board_id"
@@ -22,11 +22,12 @@ ActiveRecord::Schema.define(version: 20180906053022) do
   end
 
   create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
     t.string   "title"
     t.text     "body",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_boards_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -65,6 +66,8 @@ ActiveRecord::Schema.define(version: 20180906053022) do
     t.string   "uid"
     t.string   "name"
     t.boolean  "admin_flg"
+    t.integer  "board_id"
+    t.index ["board_id"], name: "index_users_on_board_id", using: :btree
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
@@ -73,5 +76,7 @@ ActiveRecord::Schema.define(version: 20180906053022) do
 
   add_foreign_key "board_tag_relations", "boards"
   add_foreign_key "board_tag_relations", "tags"
+  add_foreign_key "boards", "users"
   add_foreign_key "comments", "boards"
+  add_foreign_key "users", "boards"
 end

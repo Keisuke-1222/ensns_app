@@ -15,9 +15,6 @@
     <%= link_to '新規作成', new_board_path, class: 'btn btn-outline-dark' %>
   </div>
 </div>
-<% if flash[:notice] %>
-  <div class="alert alert-danger"><%= flash[:notice] %></div>
-<% end %>
 
 <div class="row">
   <% @boards.each do |board| %>
@@ -36,7 +33,7 @@
           <p class="card-text"><%= board.body.truncate(50) %></p>
         </div>
         <div class="card-footer">
-          作成者：<%= link_to board.name, root_path %>
+          作成者：<%= link_to board.user.name, root_path %>
         </div>
       </div>
     </div>

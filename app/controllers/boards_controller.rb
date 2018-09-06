@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   before_action :set_target_board, only: [:show, :edit, :update, :destroy]
+  before_action :certificated_user, only: [:edit, :update, :destroy]
 
   def index
     @boards = params[:tag_id].present? ? Tag.find(params[:tag_id]).boards : Board.all
@@ -49,10 +50,17 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:name, :title, :body, tag_ids: [])
+    params.require(:board).permit(:user_id, :title, :body, tag_ids: [])
   end
 
   def set_target_board
     @board = Board.find(params[:id])
+  end
+
+  def certificated_user
+    unless current_user == @board.user
+      flash[:danger] = "許可されていないユーザーです"
+      redirect_to @board
+    end
   end
 end
