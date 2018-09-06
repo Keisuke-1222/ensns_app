@@ -13,6 +13,7 @@
 #  encrypted_password     :string(255)      default(""), not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
+#  name                   :string(255)
 #  provider               :string(255)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -20,7 +21,6 @@
 #  sign_in_count          :integer          default(0), not null
 #  uid                    :string(255)
 #  unconfirmed_email      :string(255)
-#  username               :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -28,6 +28,7 @@
 #
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_name                  (name) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
@@ -38,11 +39,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,:trackable,
          :confirmable, :omniauthable, omniauth_providers: [:twitter]
 
+  # nameを必須・一意とする
+  validates_uniqueness_of :name
+  validates_presence_of :name
+
+  has_many :boards
+
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
-      user.username = auth["info"]["nickname"]
+      user.name = auth["info"]["nickname"]
     end
   end
 
