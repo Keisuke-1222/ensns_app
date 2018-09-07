@@ -48,6 +48,7 @@ class User < ApplicationRecord
          :confirmable, :omniauthable, omniauth_providers: [:twitter]
 
   mount_uploader :image, UserImageUploader
+  attr_accessor :image_cache
 
   # nameを必須・一意とする
   validates_uniqueness_of :name

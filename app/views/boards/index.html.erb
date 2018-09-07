@@ -33,7 +33,7 @@
           <p class="card-text"><%= board.body.truncate(50) %></p>
         </div>
         <div class="card-footer">
-          作成者：<%= link_to board.user.name, root_path %>
+          作成者：<%= link_to board.user.name, board.user %>
         </div>
       </div>
     </div>

@@ -9,7 +9,8 @@
       <%= header_link_item('ホーム', root_path) %>
       <%= header_link_item('掲示板', boards_path) %>
       <% if user_signed_in? %>
-        <strong><%= header_link_item(current_user.name, user_path(current_user.id)) %></strong>
+        <%= header_link_item("マイページ", user_path(current_user.id)) %>
+        <%= header_link_item("ユーザー一覧", users_path) %>
         <%= header_link_item('プロフィール変更', edit_user_registration_path) %>
         <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
       <% else %>

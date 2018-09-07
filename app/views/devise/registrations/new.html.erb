@@ -18,10 +18,11 @@
   </div>
 
   <div class="form-group">
-    <div class="field">
-      <%= f.label :image %>
+    <p><%= f.label "プロフィール画像" %></p>
+    <p>
       <%= f.file_field :image %>
-    </div>
+      <%= f.hidden_field :image_cache %>
+    </p>
   </div>
 
   <div class="form-group">
