@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906074804) do
+ActiveRecord::Schema.define(version: 20180907005800) do
 
   create_table "board_tag_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "board_id"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20180906074804) do
     t.string   "name"
     t.boolean  "admin_flg"
     t.integer  "board_id"
+    t.string   "image"
+    t.string   "profile"
     t.index ["board_id"], name: "index_users_on_board_id", using: :btree
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

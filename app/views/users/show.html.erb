@@ -1,2 +1,17 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>マイページ</h1>
+<p>
+  <strong>ユーザー名：</strong>
+  <%= current_user.name %>
+</p>
+<p>
+  <strong>プロフィール：</strong>
+  <%= current_user.profile %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag(current_user.image_url) %>
+</p>
+<p>
+  <strong>Thumb:</strong>
+  <%= image_tag(current_user.image_url(:thumb)) %>
+</p>

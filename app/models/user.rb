@@ -11,9 +11,11 @@
 #  current_sign_in_ip     :string(255)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
+#  image                  :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
 #  name                   :string(255)
+#  profile                :string(255)
 #  provider               :string(255)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -44,6 +46,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:trackable,
          :confirmable, :omniauthable, omniauth_providers: [:twitter]
+
+  mount_uploader :image, UserImageUploader
 
   # nameを必須・一意とする
   validates_uniqueness_of :name
