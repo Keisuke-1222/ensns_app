@@ -1,24 +1,26 @@
-<%= provide(:title, "ユーザー一覧") %>
-<div class="d-flex align-items-center">
-  <h1>ユーザー一覧</h1>
-</div>
+<div class="container">
+  <%= provide(:title, "ユーザー一覧") %>
+  <div class="d-flex align-items-center">
+    <h1>ユーザー一覧</h1>
+  </div>
 
-<div class="row">
-  <% @users.each do |user| %>
-    <div class="col-sm-6 col-md-3">
-      <div class="card">
-        <%= image_tag user.image_url, class: "card-img-top", size: "200x200" %>
-        <div class="card-body">
-          <p>
-            <%= link_to user do %>
-              <h4><%= user.name %></h4>
-            <% end %>
-          </p>
-          <h6 class="card-subtitle mb-2 text-muted">登録日：<%= user.created_at.to_s(:date_jp) %></h6>
-          <p class="card-text"><%= user.profile %></p>
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-sm-6 col-md-3">
+        <div class="card">
+          <%= image_tag user.image_url, class: "card-img-top", size: "200x200" %>
+          <div class="card-body">
+            <p>
+              <%= link_to user do %>
+                <h4><%= user.name %></h4>
+              <% end %>
+            </p>
+            <h6 class="card-subtitle mb-2 text-muted">登録日：<%= user.created_at.to_s(:date_jp) %></h6>
+            <p class="card-text"><%= user.profile %></p>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <%= paginate @users %>
 </div>
-<%= paginate @users %>

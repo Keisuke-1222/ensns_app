@@ -1,42 +1,44 @@
 <%= provide(:title, "掲示板一覧") %>
-<div class="d-flex align-items-center">
-  <h1>掲示板一覧</h1>
-  <div class="ml-auto boards__linkBox">
-    <%= form_tag boards_path, method: :get, class: "boards__searchForm" do %>
-      <%= select_tag :tag_id,
-        options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-        {
-          prompt: 'タグで絞り込み',
-          class: 'form-control boards__select',
-          onchange: 'submit(this.form);'
-        }
-      %>
-    <% end %>
-    <%= link_to '新規作成', new_board_path, class: 'btn btn-outline-dark' %>
+<div class="container">
+  <div class="d-flex align-items-center">
+    <h1>掲示板一覧</h1>
+    <div class="ml-auto boards__linkBox">
+      <%= form_tag boards_path, method: :get, class: "boards__searchForm" do %>
+        <%= select_tag :tag_id,
+          options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+          {
+            prompt: 'タグで絞り込み',
+            class: 'form-control boards__select',
+            onchange: 'submit(this.form);'
+          }
+        %>
+      <% end %>
+      <%= link_to '新規作成', new_board_path, class: 'btn btn-outline-dark' %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <% @boards.each do |board| %>
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <div class="card-header">
-          <%= link_to board do %>
-            <h4><%= board.title %>(<%= board.comments.size %>)</h4>
-          <% end %>
-          <% board.tags.each do |tag| %>
-            <span class="badge badge-primary"><%= tag.name %></span>
-          <% end %>
-        </div>
-        <div class="card-body">
-          <h6 class="card-subtitle mb-2 text-muted"><%= board.created_at.to_s(:datetime_jp) %></h6>
-          <p class="card-text"><%= board.body.truncate(50) %></p>
-        </div>
-        <div class="card-footer">
-          作成者：<%= link_to board.user.name, board.user %>
+  <div class="row">
+    <% @boards.each do |board| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <%= link_to board do %>
+              <h4><%= board.title %>(<%= board.comments.size %>)</h4>
+            <% end %>
+            <% board.tags.each do |tag| %>
+              <span class="badge badge-primary"><%= tag.name %></span>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted"><%= board.created_at.to_s(:datetime_jp) %></h6>
+            <p class="card-text"><%= board.body.truncate(50) %></p>
+          </div>
+          <div class="card-footer">
+            作成者：<%= link_to board.user.name, board.user %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <%= paginate @boards %>
 </div>
-<%= paginate @boards %>

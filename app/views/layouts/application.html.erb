@@ -15,8 +15,6 @@
       <%= content_tag(:div, value, class: "alert alert-#{key}") %>
     <% end %>
     <%= render 'header' %>
-    <div class="container">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>

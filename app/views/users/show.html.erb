@@ -1,17 +1,19 @@
-<h1>マイページ</h1>
-<p>
-  <strong>ユーザー名：</strong>
-  <%= current_user.name %>
-</p>
-<p>
-  <strong>プロフィール：</strong>
-  <%= current_user.profile %>
-</p>
-<p>
-  <strong>Image:</strong>
-  <%= image_tag(current_user.image_url) %>
-</p>
-<p>
-  <strong>Thumb:</strong>
-  <%= image_tag(current_user.image_url(:thumb)) %>
-</p>
+<div class="container">
+  <h1>マイページ</h1>
+  <p>
+    <strong>ユーザー名：</strong>
+    <%= @user.name %>
+  </p>
+  <p>
+    <strong>プロフィール：</strong>
+    <%= @user.profile %>
+  </p>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag(@user.image_url) %>
+  </p>
+  <p>
+    <strong>Thumb:</strong>
+    <%= image_tag(@user.image_url(:thumb)) %>
+  </p>
+</div>
