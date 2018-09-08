@@ -1,0 +1,1 @@
+$("#like-of-<%= @comment.id %>").html("<%= escape_javascript(render "like_comments/like", comment: @comment) %>");

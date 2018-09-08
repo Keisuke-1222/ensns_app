@@ -59,6 +59,7 @@ class User < ApplicationRecord
 
   has_many :boards
   has_many :comments
+  has_many :like_comments, dependent: :destroy
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|

@@ -6,5 +6,6 @@
     <% if current_user == comment.user %>
       <span><%= link_to '削除', comment, method: :delete, data: { confirm: '削除してもよろしいですか？' } %></span>
     <% end %>
+    <%= render "like_comments/like", comment: comment %>
   </div>
 </div>

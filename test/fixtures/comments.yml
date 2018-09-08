@@ -2,12 +2,13 @@
 #
 # Table name: comments
 #
-#  id         :integer          not null, primary key
-#  comment    :text(65535)      not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  board_id   :integer
-#  user_id    :integer
+#  id          :integer          not null, primary key
+#  comment     :text(65535)      not null
+#  likes_count :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  board_id    :integer
+#  user_id     :integer
 #
 # Indexes
 #
