@@ -27,6 +27,7 @@
 #  updated_at             :datetime         not null
 #  board_id               :integer
 #  comment_id             :integer
+#  note_id                :integer
 #
 # Indexes
 #
@@ -35,12 +36,14 @@
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_name                  (name) UNIQUE
+#  index_users_on_note_id               (note_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 # Foreign Keys
 #
 #  fk_rails_...  (board_id => boards.id)
 #  fk_rails_...  (comment_id => comments.id)
+#  fk_rails_...  (note_id => notes.id)
 #
 
 class User < ApplicationRecord
@@ -60,6 +63,7 @@ class User < ApplicationRecord
   has_many :boards
   has_many :comments
   has_many :like_comments, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|

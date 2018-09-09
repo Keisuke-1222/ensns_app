@@ -1,0 +1,13 @@
+<%= provide(:title, @note.title) %>
+<div class="container">
+  <div class="d-flex align-items-center mt-4 mb-4">
+    <div class="ml-auto boards__linkBox">
+      <%= link_to '一覧', current_user, class: "btn btn-outline-dark" %>
+      <% if current_user == @note.user %>
+        <%= link_to '編集', edit_note_path(@note), class: "btn btn-outline-dark" %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render @note %>
+</div>

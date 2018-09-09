@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header">
+    <h4><%= note.title %></h4>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= simple_format(note.body) %></p>
+    <p class="text-right font-weight-bold mr-10">
+      <%= link_to note.user.name, note.user %>
+    </p>
+  </div>
+</div>

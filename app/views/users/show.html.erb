@@ -1,19 +1,47 @@
 <div class="container">
-  <h1>マイページ</h1>
-  <p>
-    <strong>ユーザー名：</strong>
-    <%= @user.name %>
-  </p>
-  <p>
-    <strong>プロフィール：</strong>
-    <%= @user.profile %>
-  </p>
-  <p>
-    <strong>Image:</strong>
-    <%= image_tag(@user.image_url) %>
-  </p>
-  <p>
-    <strong>Thumb:</strong>
-    <%= image_tag(@user.image_url(:thumb)) %>
-  </p>
+<h1>ユーザー詳細</h1>
+  <div class="row">
+    <div class="user_profile col-3">
+      <h4>プロフィール</h4>
+      <div class="card">
+        <%= image_tag @user.image_url, class: "card-img-top", size: "200x200" %>
+        <div class="card-body">
+          <p>
+            <%= link_to @user do %>
+              <h4><%= @user.name %></h4>
+            <% end %>
+          </p>
+          <h6 class="card-subtitle mb-2 text-muted">登録日：<%= @user.created_at.to_s(:date_jp) %></h6>
+          <p class="card-text"><%= @user.profile %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-9">
+      <p>
+        <h4>ノート一覧</h4>
+        <%= link_to 'ノートを書く', new_note_path, class: 'btn btn-outline-dark' %>
+      </p>
+      <div class="row">
+        <% @notes.each do |note| %>
+          <div class="col-sm-6 col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <%= link_to note do %>
+                  <h4><%= note.title %></h4>
+                <% end %>
+              </div>
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted"><%= note.created_at.to_s(:datetime_jp) %></h6>
+                <p class="card-text"><%= note.body.truncate(50) %></p>
+              </div>
+              <div class="card-footer">
+                作成者：<%= link_to note.user.name, note.user %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
