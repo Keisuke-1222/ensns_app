@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
-    binding.pry
     if comment.save
       flash[:notice] = 'コメントを投稿しました'
       redirect_to comment.board

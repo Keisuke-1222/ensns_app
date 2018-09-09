@@ -20,6 +20,10 @@
 @import "comments";
 
 /* ログインメッセージ */
+.alert {
+  margin: 0;
+}
+
 .alert-notice {
   color: #3c763d;
   background-color: #dff0d8;
