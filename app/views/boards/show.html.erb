@@ -13,8 +13,10 @@
 
   <div class="p-comment__list">
     <div class="p-comment__listTitle">コメント</div>
-    <%= render @board.comments %>
+    <%= render @comments %>
   </div>
+
+<%= paginate @comments %>
 
   <%= render partial: 'comments/form', locals: { comment: @comment } %>
 </div>
