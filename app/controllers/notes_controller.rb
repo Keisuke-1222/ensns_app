@@ -1,7 +1,4 @@
 class NotesController < ApplicationController
-  def show
-  end
-
   def new
     @note = Note.new(flash[:note])
   end

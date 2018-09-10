@@ -6,16 +6,15 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <%= header_link_item('ホーム', root_path) %>
-      <%= header_link_item('掲示板', boards_path) %>
+      <%= header_link_item('Home', root_path) %>
+      <%= header_link_item('Board', boards_path) %>
       <% if user_signed_in? %>
-        <%= header_link_item("マイページ", user_path(current_user.id)) %>
-        <%= header_link_item("ユーザー一覧", users_path) %>
-        <%= header_link_item('プロフィール変更', edit_user_registration_path) %>
-        <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+        <%= header_link_item("MyPage", user_path(current_user.id)) %>
+        <%= header_link_item("Engineers", users_path) %>
+        <li class="nav-item"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
       <% else %>
-        <%= header_link_item('新規登録', new_user_registration_path) %>
-        <%= header_link_item('ログイン', new_user_session_path) %>
+        <%= header_link_item('Sign up', new_user_registration_path) %>
+        <%= header_link_item('Log in', new_user_session_path) %>
       <% end %>
     </ul>
     <form class="form-inline my-2 my-lg-0">
