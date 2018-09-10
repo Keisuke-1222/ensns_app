@@ -18,7 +18,7 @@
 
   <%= paginate @comments %>
 
-  <% if current_user %>
+  <% if user_signed_in? %>
     <%= render partial: 'comments/form', locals: { comment: @comment } %>
   <% else %>
     <p>コメントを書くにはログインが必要です</p>

@@ -1,4 +1,6 @@
 class LikeCommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @comment = Comment.find(params[:comment_id])
     unless @comment.like?(current_user)

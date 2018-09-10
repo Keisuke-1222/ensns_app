@@ -13,7 +13,9 @@
           }
         %>
       <% end %>
-      <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-dark' %>
+      <% if user_signed_in? %>
+        <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-dark' %>
+      <% end %>
     </div>
   </div>
 

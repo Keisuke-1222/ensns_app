@@ -1,4 +1,7 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :note_author, only: [:edit, :update, :destroy]
+
   def new
     @note = Note.new(flash[:note])
   end
@@ -46,5 +49,12 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :body)
+  end
+
+  def note_author
+    unless current_user == Note.find(params[:id]).user
+      flash[:danger] = "許可されていないアクションです"
+      redirect_to current_user
+    end
   end
 end
