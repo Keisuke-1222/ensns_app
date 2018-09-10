@@ -2,12 +2,12 @@
 
 <%= form_for note do |f| %>
   <div class="form-group">
-    <%= f.label :title, 'タイトル' %>
+    <%= f.label :title, 'Title' %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :body, '本文' %>
+    <%= f.label :body, 'Text' %>
     <%= f.text_area :body, class: 'form-control', rows: 15 %>
   </div>
-  <%= f.submit '保存', class: 'btn btn-primary' %>
+  <%= f.submit 'Store', class: 'btn btn-primary' %>
 <% end %>

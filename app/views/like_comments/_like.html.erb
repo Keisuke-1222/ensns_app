@@ -2,14 +2,16 @@
   <span id="like-of-<%= comment.id %>">
   <% if comment.like?(current_user) %>
     <%= button_to comment_like_comment_path(comment.like_comments, comment_id: comment.id), method: :delete, id: "like-button", remote: true do %>
-      <i class="fas fa-heart button"></i>
+      <span>LGTMed</span>
+      <i class="fas fa-thumbs-up"></i>
       <span>
         <%= comment.likes_count %>
       </span>
     <% end %>
   <% else %>
     <%= button_to comment_like_comments_path(comment), id: "like-button", remote: true do %>
-      <i class="far fa-heart"></i>
+      <span>LGTM!!</span>
+      <i class="far fa-thumbs-up"></i>
       <span>
         <%= comment.likes_count %>
       </span>

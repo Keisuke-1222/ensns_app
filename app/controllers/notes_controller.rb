@@ -33,7 +33,13 @@ class NotesController < ApplicationController
       flash[:error_messages] = @note.errors.full_messages
       render :edit
     end
+  end
 
+  def destroy
+    @note = Note.find(params[:id])
+    @note.delete
+    flash[:notice] = "#{@note.title}が削除されました"
+    redirect_to current_user
   end
 
   private

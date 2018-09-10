@@ -1,8 +1,8 @@
 <div class="container">
   <div class="d-flex align-items-center">
-    <h1>ノートをかく</h1>
+    <h1>Write Note</h1>
     <div class="ml-auto boards__linkBox">
-      <%= link_to '一覧', "#", class: "btn btn-outline-dark" %>
+      <%= link_to 'All notes', current_user, class: "btn btn-outline-dark" %>
     </div>
   </div>
   <%= render partial: "form", locals: { note: @note } %>

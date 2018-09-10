@@ -1,3 +1,3 @@
 $(document).on('turbolinks:load', function() {
-FontAwesome.dom.i2svg()
+  window.FontAwesome.dom.i2svg()
 })
