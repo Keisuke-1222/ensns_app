@@ -25,7 +25,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new(board_id: @board.id, user_id: current_user.id)
+    @comment = Comment.new(board_id: @board.id)
     @comments = @board.comments.page(params[:page])
   end
 

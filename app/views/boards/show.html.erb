@@ -16,7 +16,11 @@
     <%= render @comments %>
   </div>
 
-<%= paginate @comments %>
+  <%= paginate @comments %>
 
-  <%= render partial: 'comments/form', locals: { comment: @comment } %>
+  <% if current_user %>
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+  <% else %>
+    <p>コメントを書くにはログインが必要です</p>
+  <% end %>
 </div>
