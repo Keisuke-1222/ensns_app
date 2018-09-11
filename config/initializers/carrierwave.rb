@@ -8,8 +8,8 @@ CarrierWave.configure do |config|
 
     case Rails.env
     when 'development'
-        config.fog_directory  = 'ensns'
-        config.asset_host = 'https://s3.ap-northeast-1.amazonaws.com/ensns'
+        config.fog_directory  = 'ensns-dev'
+        config.asset_host = 'https://s3.ap-northeast-1.amazonaws.com/ensns-dev'
     when 'production'
         config.fog_directory  = 'ensns'
         config.asset_host = 'https://s3.ap-northeast-1.amazonaws.com/ensns'
