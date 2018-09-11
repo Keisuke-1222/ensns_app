@@ -4,7 +4,7 @@
   <p class="p-comment__formTitle">コメント記入</p>
   <%= form_for comment do |f| %>
     <%= f.hidden_field :board_id %>
-    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="form-group">
       <%= f.text_area :comment, class: 'form-control', rows: 4 %>
     </div>
