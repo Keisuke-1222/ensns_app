@@ -1,0 +1,15 @@
+current directory: /Users/keisuke/railsApps/environment/udemy_rails_app/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+/Users/keisuke/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180911-4080-2kht0z.rb extconf.rb
+creating Makefile
+
+current directory: /Users/keisuke/railsApps/environment/udemy_rails_app/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /Users/keisuke/railsApps/environment/udemy_rails_app/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.bundle
+
+current directory: /Users/keisuke/railsApps/environment/udemy_rails_app/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20180911-4080-1nia6qk/bindex
