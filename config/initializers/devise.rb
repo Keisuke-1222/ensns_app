@@ -288,5 +288,5 @@ Devise.setup do |config|
   #   include Turbolinks::Controller
   # end
   config.omniauth :twitter, "API Key", "API Secret"
-  config.mailer_sender = "s.k.s.k.ra20+test@gmail.com"
+  config.mailer_sender = ENV['GMAIL_ADDRESS']
 end
