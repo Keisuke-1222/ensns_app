@@ -69,7 +69,10 @@ class User < ApplicationRecord
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
-      user.name = auth["info"]["nickname"]
+      user.name = auth["info"]["name"]
+      user.image = auth["info"]["image"]
+      user.email = "#{auth.provider}-#{auth.uid}@example.com"
+      user.profile = auth["info"]["description"]
     end
   end
 
@@ -81,5 +84,27 @@ class User < ApplicationRecord
     else
       super
     end
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
+
+  protected
+
+  def confirmation_required?
+    false
+  end
+
+  def password_required?
+    super && provider.blank?
+  end
+
+  def email_required?
+    provider.blank?
   end
 end

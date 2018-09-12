@@ -287,6 +287,6 @@ Devise.setup do |config|
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller
   # end
-  config.omniauth :twitter, "API Key", "API Secret"
+  config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"], callback_url: "https://127.0.0.1:3000/users/auth/twitter/callback"
   config.mailer_sender = 'info@ensns.com'
 end
