@@ -70,7 +70,7 @@ class User < ApplicationRecord
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["info"]["name"]
-      user.image = auth["info"]["image"]
+      user.remote_image_url = auth["info"]["image"]
       user.email = "#{auth.provider}-#{auth.uid}@example.com"
       user.profile = auth["info"]["description"]
     end
