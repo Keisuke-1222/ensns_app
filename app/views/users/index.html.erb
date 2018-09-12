@@ -7,16 +7,18 @@
   <div class="row">
     <% @users.each do |user| %>
       <div class="col-6 col-md-3">
-        <div class="card">
-          <%= image_tag user.image_url, class: "card-img-top", size: "200x200" %>
-          <div class="card-body">
+        <div class="card profile-card">
+          <div class="card-header profile-image">
+            <%= image_tag user.image_url, size: "100x100" %>
+          </div>
+          <div class="card-body profile-body">
             <p>
               <%= link_to user do %>
                 <h4><%= user.name %></h4>
               <% end %>
             </p>
             <h6 class="card-subtitle mb-2 text-muted">from: <%= user.created_at.to_s(:date_jp) %></h6>
-            <p class="card-text"><%= user.profile %></p>
+            <p class="card-text"><%= user.profile.truncate(50) %></p>
           </div>
         </div>
       </div>
