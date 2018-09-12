@@ -1,21 +1,19 @@
-<% if current_user != comment.user %>
-  <span id="like-of-<%= comment.id %>">
-  <% if comment.like?(current_user) %>
-    <%= button_to comment_like_comment_path(comment.like_comments, comment_id: comment.id), method: :delete, id: "like-button", remote: true do %>
-      <span>LGTMed</span>
-      <i class="fas fa-thumbs-up"></i>
-      <span>
-        <%= comment.likes_count %>
-      </span>
-    <% end %>
-  <% else %>
-    <%= button_to comment_like_comments_path(comment), id: "like-button", remote: true do %>
-      <span>LGTM!!</span>
-      <i class="far fa-thumbs-up"></i>
-      <span>
-        <%= comment.likes_count %>
-      </span>
-    <% end %>
+<span id="like-of-<%= comment.id %>">
+<% if comment.like?(current_user) %>
+  <%= button_to comment_like_comment_path(comment.like_comments, comment_id: comment.id), method: :delete, id: "like-button", remote: true do %>
+    <span>LGTMed</span>
+    <i class="fas fa-thumbs-up"></i>
+    <span>
+      <%= comment.likes_count %>
+    </span>
   <% end %>
-  </span>
+<% else %>
+  <%= button_to comment_like_comments_path(comment), id: "like-button", remote: true do %>
+    <span>LGTM!!</span>
+    <i class="far fa-thumbs-up"></i>
+    <span>
+      <%= comment.likes_count %>
+    </span>
+  <% end %>
 <% end %>
+</span>
