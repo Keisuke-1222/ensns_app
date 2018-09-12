@@ -1,5 +1,1 @@
-$(document).on('turbolinks:load', function() {
-  window.FontAwesome.dom.i2svg()
-})
-
 $("#like-of-<%= @comment.id %>").html("<%= escape_javascript(render "like_comments/like", comment: @comment) %>");
