@@ -289,4 +289,5 @@ Devise.setup do |config|
   # end
   config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"], callback_url: "https://127.0.0.1:3000/users/auth/twitter/callback"
   config.mailer_sender = 'info@ensns.com'
+  config.secret_key = ENV["DEVISE_SECRET_KEY"]
 end
