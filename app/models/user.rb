@@ -58,12 +58,12 @@ class User < ApplicationRecord
 
   # nameを必須・一意とする
   validates_uniqueness_of :name
-  validates_presence_of :name
 
   has_many :boards
   has_many :comments
   has_many :like_comments, dependent: :destroy
   has_many :notes, dependent: :destroy
+  validates :name, presence: true, length: { maximum: 30 }
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|

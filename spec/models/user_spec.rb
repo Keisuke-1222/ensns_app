@@ -29,4 +29,10 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors.full_messages).to include("パスワードは6文字以上で入力してください")
   end
+
+  it "it invalid with too long name" do
+    user = build(:user, name: "a" * 31)
+    user.valid?
+    expect(user.errors.full_messages).to include("Nameは30文字以内で入力してください")
+  end
 end
