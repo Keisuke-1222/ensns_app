@@ -18,22 +18,26 @@ RSpec.describe Board, type: :model do
   end
 
   it "is invalid without title" do
-    board = @user.boards.create(title: nil)
+    board = @user.boards.new(title: nil)
+    board.valid?
     expect(board.errors.full_messages).to include("タイトルを入力してください")
   end
 
   it "is invalid without body" do
-    board = @user.boards.create(body: nil)
+    board = @user.boards.new(body: nil)
+    board.valid?
     expect(board.errors.full_messages).to include("本文を入力してください")
   end
 
   it "is invalid with too long title" do
-    board = @user.boards.create(title: "a" * 31)
+    board = @user.boards.new(title: "a" * 31)
+    board.valid?
     expect(board.errors.full_messages).to include("タイトルは30文字以内で入力してください")
   end
 
   it "is invalid with too long body" do
-    board = @user.boards.create(body: "a" * 1001)
+    board = @user.boards.new(body: "a" * 1001)
+    board.valid?
     expect(board.errors.full_messages).to include("本文は1000文字以内で入力してください")
   end
 

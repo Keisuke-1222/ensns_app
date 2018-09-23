@@ -53,6 +53,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rails-flog', require: 'flog'
   gem 'rspec-rails'
+  gem 'factory_bot_rails', '~> 4.10.0'
   gem 'pry-byebug'
   gem 'pry-rails'
 end
