@@ -1,60 +1,9 @@
 <% provide(:title, @user.name) %>
 <div class="container">
   <h1><%= current_user?(@user) ? "My Page" : "#{@user.name}'s Page" %></h1>
+  <%= render "follow_form" if user_signed_in? %>
   <div class="row">
-    <div class="col-sm-12 col-md-3">
-      <div class="d-flex align-items-center notes__line">
-        <h4>Profile</h4>
-        <div class="ml-auto notes__linkBox">
-          <% if current_user?(@user) %>
-            <%= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn-outline-dark' %>
-          <% end %>
-        </div>
-      </div>
-      <div class="card">
-        <%= image_tag @user.image_url, class: "card-img-top", size: "200x200" %>
-        <div class="card-body">
-          <p>
-            <%= link_to @user do %>
-              <h4><%= @user.name %></h4>
-            <% end %>
-          </p>
-          <h6 class="card-subtitle mb-2 text-muted">from: <%= @user.created_at.to_s(:date_jp) %></h6>
-          <p class="card-text"><%= simple_format(@user.profile) %></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-9">
-      <div class="d-flex align-items-center notes__line">
-        <h4><%= current_user?(@user) ? "My Notes" : "#{@user.name}'s Notes" %></h4>
-        <div class="ml-auto notes__linkBox">
-          <% if current_user?(@user) %>
-            <%= link_to 'New Note', new_note_path, class: 'btn btn-outline-dark' %>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <% @notes.each do |note| %>
-          <div class="col-sm-6 col-md-4">
-            <div class="card">
-              <div class="card-header">
-                <%= link_to note do %>
-                  <h4><%= note.title %></h4>
-                <% end %>
-              </div>
-              <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted"><%= note.created_at.to_s(:datetime_jp) %></h6>
-                <p class="card-text"><%= note.body.truncate(50) %></p>
-              </div>
-              <div class="card-footer">
-                Author: <%= @user.name %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <%= paginate @notes %>
-    </div>
+    <%= render "profile" %>
+    <%= render "notes" %>
   </div>
 </div>
