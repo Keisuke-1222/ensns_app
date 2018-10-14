@@ -24,6 +24,9 @@ class Board < ApplicationRecord
   has_many :tags, through: :board_tag_relations
   belongs_to :user
 
+  has_many :favorite_boards
+  has_many :users, through: :favorite_boards
+
   validates :title, presence: true, length: { maximum: 30 }
   validates :body, presence: true, length: { maximum: 1000 }
 end

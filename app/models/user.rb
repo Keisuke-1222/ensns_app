@@ -70,6 +70,9 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :favorite_boards
+  has_many :like_boards, through: :favorite_boards, source: :board
+
   validates :name, presence: true, length: { maximum: 30 }
 
   def self.from_omniauth(auth)
@@ -121,6 +124,18 @@ class User < ApplicationRecord
     following_ids = "SELECT followed_id FROM relationships
       WHERE follower_id = :user_id"
     Note.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+  end
+
+  def add_to_favorites(board)
+    like_boards << board
+  end
+
+  def remove_from_favorites(board)
+    FavoriteBoard.find_by(user_id: id, board_id: board.id).destroy
+  end
+
+  def favorites?(board)
+    like_boards.include?(board)
   end
 
   protected
