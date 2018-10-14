@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @notes = @user.notes.page(params[:page])
+    if current_user == @user
+      @notes = @user.feed.page(params[:page])
+    else
+      @notes = @user.notes.page(params[:page])
+    end
   end
 end

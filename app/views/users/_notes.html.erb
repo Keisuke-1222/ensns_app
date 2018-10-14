@@ -1,6 +1,6 @@
 <div class="col-9">
   <div class="d-flex align-items-center notes__line">
-    <h4><%= current_user?(@user) ? "My Notes" : "#{@user.name}'s Notes" %></h4>
+    <h4><%= current_user?(@user) ? "Your and Following's Notes" : "#{@user.name}'s Notes" %></h4>
     <div class="ml-auto notes__linkBox">
       <% if current_user?(@user) %>
         <%= link_to 'New Note', new_note_path, class: 'btn btn-outline-dark' %>
@@ -21,7 +21,7 @@
             <p class="card-text"><%= note.body.truncate(50) %></p>
           </div>
           <div class="card-footer">
-            Author: <%= @user.name %>
+            Author: <%= note.user.name %>
           </div>
         </div>
       </div>
