@@ -4,7 +4,14 @@ class BoardsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
+    # タグで絞り込み
     @boards = params[:tag_id].present? ? Tag.find(params[:tag_id]).boards : Board.all
+
+    # お気に入りのみ表示
+    if params[:favorite] == "1"
+      @boards = current_user.like_boards
+    end
+
     @boards = @boards.page(params[:page])
   end
 

@@ -3,6 +3,11 @@
   <div class="d-flex align-items-center">
     <h1>Boards</h1>
     <div class="ml-auto boards__linkBox">
+      <%= form_tag boards_path, method: "get" do |f| %>
+        <%= check_box_tag :favorite %>
+        <%= submit_tag "お気に入りのみ表示", name: nil %>
+      <% end %>
+
       <%= form_tag boards_path, method: :get, class: "boards__searchForm" do %>
         <%= select_tag :tag_id,
           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
