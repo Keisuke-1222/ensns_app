@@ -1,0 +1,5 @@
+<%= form_for(:favorite, url: favorite_path(board.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "お気に入りから削除する", class: "btn btn-dark" %>
+<% end %>

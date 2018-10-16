@@ -1,0 +1,2 @@
+module FavoriteBoardsHelper
+end

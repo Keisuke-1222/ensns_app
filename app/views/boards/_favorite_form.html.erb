@@ -1,0 +1,7 @@
+<div id="favorite_form">
+<% if current_user.favorites?(board) %>
+  <%= render partial: 'remove_favorite', locals: { board: board } %>
+<% else %>
+  <%= render partial: 'add_favorite', locals: { board: board } %>
+<% end %>
+</div>
