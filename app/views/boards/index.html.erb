@@ -3,9 +3,13 @@
   <div class="d-flex align-items-center">
     <h1>Boards</h1>
     <div class="ml-auto boards__linkBox">
-      <%= form_tag boards_path, method: "get" do |f| %>
-        <%= check_box_tag :favorite %>
-        <%= submit_tag "お気に入りのみ表示", name: nil %>
+      <%= form_tag boards_path, method: "get" do %>
+        <% if params[:favorite] == "1" %>
+          <%= check_box_tag :favorite, 1, true, { onchange: "submit(this.form);" } %>
+        <% else %>
+          <%= check_box_tag :favorite, 1, false, { onchange: "submit(this.form);" } %>
+        <% end %>
+        <%= label_tag "お気に入りのみ表示する" %>
       <% end %>
 
       <%= form_tag boards_path, method: :get, class: "boards__searchForm" do %>
