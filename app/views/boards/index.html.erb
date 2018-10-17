@@ -3,25 +3,8 @@
   <div class="d-flex align-items-center">
     <h1>Boards</h1>
     <div class="ml-auto boards__linkBox">
-      <%= form_tag boards_path, method: "get" do %>
-        <% if params[:favorite] == "1" %>
-          <%= check_box_tag :favorite, 1, true, { onchange: "submit(this.form);" } %>
-        <% else %>
-          <%= check_box_tag :favorite, 1, false, { onchange: "submit(this.form);" } %>
-        <% end %>
-        <%= label_tag "お気に入りのみ表示する" %>
-      <% end %>
-
-      <%= form_tag boards_path, method: :get, class: "boards__searchForm" do %>
-        <%= select_tag :tag_id,
-          options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-          {
-            prompt: 'タグで絞り込み',
-            class: 'form-control boards__select',
-            onchange: 'submit(this.form);'
-          }
-        %>
-      <% end %>
+      <%= render "favorite_filter" %>
+      <%= render "tag_filter" %>
       <% if user_signed_in? %>
         <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-dark' %>
       <% end %>
