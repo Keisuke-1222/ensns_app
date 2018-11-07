@@ -141,7 +141,7 @@ class User < ApplicationRecord
   protected
 
   def confirmation_required?
-    false
+    false unless provider.blank?
   end
 
   def password_required?
