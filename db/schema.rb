@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181017075948) do
+ActiveRecord::Schema.define(version: 20181108010349) do
 
   create_table "board_tag_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "board_id"
@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(version: 20181017075948) do
 
   create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.text     "body",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "body",           limit: 65535
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "user_id"
+    t.integer  "comments_count",               default: 0
     t.index ["user_id"], name: "index_boards_on_user_id", using: :btree
   end
 

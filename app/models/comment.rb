@@ -22,7 +22,7 @@
 #
 
 class Comment < ApplicationRecord
-  belongs_to :board
+  belongs_to :board, counter_cache: :comments_count
   belongs_to :user
   has_many :like_comments, dependent: :destroy
   has_many :like_users, through: :like_comments, source: :user
