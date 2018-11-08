@@ -54,6 +54,9 @@ GEM
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
     builder (3.2.3)
+    bullet (5.8.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (10.0.2)
     cancancan (2.3.0)
     carrierwave (1.2.3)
@@ -470,6 +473,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    uniform_notifier (1.12.1)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.7.0)
@@ -489,6 +493,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bootstrap (~> 4.1.0)
+  bullet
   byebug
   cancancan
   carrierwave
@@ -528,4 +533,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.16.2
+   1.17.1
