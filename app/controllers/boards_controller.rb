@@ -34,7 +34,7 @@ class BoardsController < ApplicationController
 
   def show
     @comment = Comment.new(board_id: @board.id)
-    @comments = @board.comments.page(params[:page])
+    @comments = @board.comments.includes(:user, :like_users).page(params[:page])
   end
 
   def edit
