@@ -1,6 +1,11 @@
 <% provide(:title, @user.name) %>
 <div class="container">
-  <h1><%= current_user?(@user) ? "My Page" : "#{@user.name}'s Page" %></h1>
+  <div class='d-flex align-items-center'>
+    <h1><%= current_user?(@user) ? "My Page" : "#{@user.name}'s Page" %></h1>
+    <% if current_user.admin_flg? %>
+      <%= link_to '管理画面', rails_admin_path, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
   <%= render "follow_form" if user_signed_in? %>
   <div class="row">
     <%= render "profile" %>
