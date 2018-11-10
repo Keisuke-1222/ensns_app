@@ -1,9 +1,10 @@
 <%= provide(:title, "Boards") %>
 <div class="container">
-  <div class="d-flex align-items-center">
+  <div class="align-items-center">
     <h1>Boards</h1>
-    <div class="ml-auto boards__linkBox">
+    <div>
       <%= render "favorite_filter" %>
+      <%= render "sort_filter" %>
       <%= render "tag_filter" %>
       <% if user_signed_in? %>
         <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-dark' %>
@@ -28,7 +29,7 @@
             <p class="card-text"><%= board.body.truncate(50) %></p>
           </div>
           <div class="card-footer">
-            owner: <%= link_to board.user.name, board.user %>
+            作成者: <%= link_to board.user.name, board.user %>
           </div>
         </div>
       </div>

@@ -29,4 +29,15 @@ class Board < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 30 }
   validates :body, presence: true, length: { maximum: 1000 }
+
+  scope :sorting_by, ->(sort_params) {
+    case sort_params
+    when 'コメントが多い順'
+      order(comments_count: :desc)
+    when '古い順'
+      order(created_at: :asc)
+    else
+      order(created_at: :desc)
+    end
+  }
 end

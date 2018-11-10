@@ -12,7 +12,7 @@ class BoardsController < ApplicationController
       @boards = current_user.like_boards
     end
 
-    @boards = @boards.includes(:tags, :user).page(params[:page])
+    @boards = @boards.includes(:tags, :user).sorting_by(params[:sort]).page(params[:page])
   end
 
   def new

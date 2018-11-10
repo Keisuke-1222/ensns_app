@@ -1,0 +1,8 @@
+<%= form_tag(request.url, method: "get", class: 'boards__searchForm') do %>
+  <%= select_tag :sort,
+    options_for_select(['並び替え', 'コメントが多い順', '新着順', '古い順'],
+      selected: params[:sort] || '並び替え'),
+    onchange: 'this.form.submit()',
+    class: 'form-control boards__select'
+  %>
+<% end %>
