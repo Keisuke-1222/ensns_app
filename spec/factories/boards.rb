@@ -20,7 +20,7 @@
 
 FactoryBot.define do
   factory :board do
-    title "test title"
+    sequence(:title) { |n| "test title #{n}" }
     body "test body"
     association :user
   end
